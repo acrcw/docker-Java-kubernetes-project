@@ -13,16 +13,16 @@ spec:
         app: shopfront
     spec:
       containers:
-      - name: shopfront
-        image: a/shopfront:latest
-        ports:
-        - containerPort: 8010
-        livenessProbe:
-          httpGet:
-            path: /health
-            port: 8010
-          initialDelaySeconds: 30
-          timeoutSeconds: 1
+        - name: shopfront
+          image: acrcw/shopfront:latest
+          ports:
+            - containerPort: 8010
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8010
+            initialDelaySeconds: 30
+            timeoutSeconds: 1
 ---
 apiVersion: v1
 kind: Service
@@ -35,6 +35,6 @@ spec:
   selector:
     app: shopfront
   ports:
-  - protocol: TCP
-    port: 8010
-    name: http
+    - protocol: TCP
+      port: 8010
+      name: http
